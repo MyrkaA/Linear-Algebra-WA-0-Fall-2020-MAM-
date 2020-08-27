@@ -1,0 +1,23 @@
+%%% Don't mess with this file!
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{enumitem}
+
+\setlist[enumerate]{itemsep=3pt,topsep=3pt}
+\setlist[enumerate,1]{label=(\alph*)}
+
+\renewcommand\baselinestretch{1.5}
+
+\newcommand{\WAtitle}[2]{\noindent\textbf{\Large Writing Assignment \#{#1} \hfill due #2}\\}
+\newcommand{\WAauthors}[1]{\noindent {#1}\\}
+\newcommand{\defi}[1]{\textbf{\textit{#1}}}
+
+\theoremstyle{definition}
+\newtheorem*{defn*}{Definition}
+\newtheorem*{prop*}{Proposition}
+\newtheorem*{example*}{Example}
+\newtheorem*{thm*}{Theorem}
+
+\DeclareMathOperator{\Row}{row}
+\DeclareMathOperator{\Col}{col}
+\DeclareMathOperator{\trace}{Tr}

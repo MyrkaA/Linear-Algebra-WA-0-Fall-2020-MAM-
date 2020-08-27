@@ -1,0 +1,90 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\include{preamble}
+
+\begin{document}
+
+\WAtitle{2}{Wednesday, September 2} %% Put the assignment number in the first { } and the due date in the second { }
+\WAauthors{Prof.\ Gibbons and Cats} %% Put the authors here
+
+%%% Gibbons note: Check out WA-0.tex for the proof of \S1.3, \#43c
+
+\begin{defn*} If $A = [a_{ij}]$ is an $n \times n$ matrix, then the \defi{trace} of $A$, $\trace(A)$, is defined to be the sum of the elements on the main diagonal of $A$.  That is, 
+\[
+\trace(A) = \sum_{i = 1}^n a_{ii}.
+\]
+\end{defn*}
+
+\begin{prop*}[A Property of the Trace, \S1.3, \#43e] 
+    If $A$ is an $n \times n$ matrix, then $\trace(A^{T} A) \geq 0$.
+\end{prop*}
+
+%%% Gibbons feedback to the original proof-writer: You have the right idea, but you didn't use the definition of matrix multiplication correctly.  Write down an example of the trace of a 2 by 2 matrix A (like row_1(A) = [2,-1], row_2(A) = [-2,0]) and its transpose, then find product, then find the trace of the product (it's bigger than 4).  That will show you where you went wrong in the last line of your proof.
+
+\begin{proof} 
+    Assume that $A$ is an $n \times n$ matrix. By definition of trace, $\trace(A^{T}A) = \trace(A^{T})\trace(A)$.  By \#43d (shown below), $\trace(A^{\text{T}}) =\trace(A)$.
+
+    Hence, $\trace(A^{T}A) = \left( \sum_{i=1}^n a_{ii} \right)^2$, which is greater than or equal to zero because it is a square.\end{proof}
+
+\begin{prop*}[More Properties of the Trace, \S1.3, \#43a,b,d] 
+    %write your proposition here
+\end{prop*}
+
+\begin{proof}
+    %write your proof here
+\end{proof}
+
+
+\begin{prop*}[\S1.4, \#4(b)] 
+    If $A$, $B$, and $C$ are matrices of appropriate sizes, then $(A+B)C = AC + BC$.
+\end{prop*}
+
+%%% Construct the proof of this statement by putting the following statements (including the equations in the align* environment) in order within a proof environment; then delete this comment.  Note that the expressions in the align* environment should ultimately remain in there, but that you will need to reorder some or them so that they flow naturally (think about the steps you would take to simplify an expression to work toward your goal
+
+\begin{proof}
+
+    This equality holds for all $1 \leq i \leq m$ and $1 \leq k \leq p$, and thus $(A+B)C = AC + BC$ as desired.
+    %statement1
+
+    By the properties of matrix addition, the matrix $A+B$ has entries $a_{ij} + b_{ij}$ for $1 \leq i \leq m$ and $1 \leq j \leq n$. 
+    %statement2
+    
+    By the definition of matrix multiplication and a previous writing assignment (\S1.2 \#17), 
+    %statement3
+    
+    Suppose that $A = [a_{ij}]$ and $B = [b_{ij}]$ are $m\times n$ matrices and $C = [c_{jk}]$ is an $n \times p$ matrix. %statement4
+    
+    Let $m$, $n$, and $p$ be positive integers. 
+    %statement5
+    
+    \begin{align*}
+    [(A+B)C]_{ik} 
+        &= \Row_{i}(A+B)^T \cdot \Col_{k}(C) \\ 
+        %eq1, which looks like it's in the right place, since it's the definition of matrix multiplication.
+        &= \sum_{j = 1}^n (a_{ij} + b_{ij})c_{jk}\\ 
+        %eq2, which reminds me of the formula for the entries of (A+B)C that we get from using the definition
+        &= [AC + BC]_{ik}\\ 
+        %eq3, which looks a lot like your ultimate target, so it's a good bet it goes last.
+        &= \Row_{i}(A)^T\cdot \Col_k(C) + \Row_{i}(B)^T \cdot \Col_k(C)\\ 
+        %eq4, which looks like the definition of matrix multiplication for two matrices.
+        &= [AC]_{ik} + [BC]_{ik}\\ 
+        %eq5, which looks like we've worked out the entries for AC and for BC, so it probably comes after something that looks a whole lot like the definition of matrix multiplication
+        &= \sum_{j = 1}^n a_{ij}c_{jk} + \sum_{j = 1}^n b_{ij}c_{jk} 
+        %eq6, which looks a lot like the formula for the $ik$-th entry of AC+BC, and I bet you can probably turn it into the definition of matrix multiplication for AC and for BC...
+    \end{align*}
+
+\end{proof}
+
+\begin{thm*}[\S1.4, \#7] 
+    Prove that $CA = \sum_{j = 1}^m c_j A_j$. 
+\end{thm*}
+
+%%% Gibbons note: that does *not* look like a well-formed proposition! If I were grading this statement I would ask "What is C? What is A? What about m? Do propositions have words like "Prove that" in them?
+
+\begin{proof} 
+    %%% Your proof here.  Probably a good idea to work it out on paper first.
+\end{proof}
+
+
+\end{document}

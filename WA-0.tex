@@ -1,0 +1,142 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\include{preamble}
+
+\begin{document}
+
+\WAtitle{1}{August 26, 2020} %% Put the assignment number in the first { } and the due date in the second { }
+\WAauthors{Myrka Aguilar-Montano} %% Put the authors here
+
+Almost every mathematician learns \LaTeX, the mathematical typesetting language, by starting with a document that compiles (like this one!) and editing it.  Inevitably, your \LaTeX\ code will occasionally fail to compile.  The online software that you are using right now will attempt to give you useful error messages, but you can also learn a lot by googling.  Over the semester, I will add more resources and offer special \LaTeX\ office hours as we need to do more complicated mathematical writing.  For now, this document will get you started with the code you need to write your first proofs.
+
+\begin{prop*} 
+    For all $a,b,c \in \mathbb{R}$, the following properties hold:
+    \begin{enumerate}
+        \item Addition is commutative: $a+b = b+a$.
+        \item Addition is associative: $(a+b)+c = a+(b+c)$.
+        \item Multiplication is distributive over addition: $a(b+c) = ab + ac$.
+        \item Multiplication is commutative: $ab = ba$.
+        \item Multiplication is associative: $(ab)c=a(bc)$
+        \item There exists an additive identity $0$ such that $a + 0 = 0 + a = a$.
+        \item Given $a$, there exists an additive inverse $d$ such that $a+d = d+a = 0$; we refer to this number as $-a$ and for real numbers, $-a = -1\cdot a$.
+        \item There exists a multiplicative identity $1$ such that $a1 = 1a = a$.
+        \item Given $a \not = 0$, there exists a multiplicative inverse $d$ such that $ad = da = 1$; we refer to this number as $a^{-1}$ and for real numbers, $a^{-1} = 1/a$.
+        \item Multiplication has the zero-product property: if $ab = ba = 0$, then one of $a$ or $b$ is zero.
+    \end{enumerate}
+\end{prop*}
+ 
+You can use these properties of real number operations in your first couple writing assignments by referring to their names.  For example, you might say, 
+\begin{quote}
+``By the commutative and associative properties of addition of real numbers, 
+\begin{align*}
+    a_{1,1} + (a_{1,2} + a_{1,3}) 
+        &= (a_{1,2} + a_{1,3}) + a_{1,1}\\ 
+        &= a_{1,2} + (a_{1,3} + a_{1,1}).\text{''}
+\end{align*}
+\end{quote}
+
+\clearpage
+
+Sometimes we will investigate the \textit{trace} of a matrix.
+
+\begin{defn*} 
+    If $A = [a_{ij}]$ is an $n \times n$ matrix, then the \defi{trace} of $A$, denoted $\trace(A)$, is defined to be the sum of the elements on the main diagonal of $A$.  That is, 
+    \[
+        \trace(A) = \sum_{i = 1}^n a_{ii}.
+    \]
+\end{defn*}
+
+You may find the following proposition and proof helpful as inspiration for the second writing assignment.
+
+\begin{prop*}[\S1.3, \#43c]  
+    If both $A$ and $B$ are $n \times n$ matrices, then Tr$(AB) =$ Tr$(BA)$.
+\end{prop*}
+
+\begin{proof} 
+    Let $A$ and $B$ be $n \times n$ matrices. 
+    By the definition of trace, $\text{Tr}(AB)$ is the sum of the main diagonal entries of $AB$. By definition of matrix multiplication, the $(i,i)$-th entry of $AB$ is 
+    \begin{align*}
+        [AB]_{ii} &= \Row_i(A)^T\cdot \Col_i(B) \\ &= \sum_{k=1}^{n} a_{ik} b_{ki}.
+    \end{align*}
+
+    Hence, $\text{Tr}(AB) = \sum_{i=1}^n [AB]_{ii} =\sum_{i=1}^n \left( \sum_{k=1}^n a_{ik} b_{ki} \right)$.
+    
+    Since real number multiplication is commutative, $a_{ik} b_{ki} = b_{ki} a_{ik}$.  By \S1.2, \#18 (proof forthcoming), we can switch the order of summation.  Combining all of the above yields
+    \[
+        \text{Tr}(AB)
+        = \sum_{i=1}^n \left( \sum_{k=1}^n a_{ik} b_{ki} \right) 
+        = \sum_{i=1}^n \left( \sum_{k=1}^n b_{ki} a_{ik} \right) 
+        = \sum_{k=1}^n \left( \sum_{i=1}^n b_{ki} a_{ik} \right) 
+        = \text{Tr}(BA). 
+    \]
+\end{proof}
+
+%%%%%%
+% This is a LaTeX comment. You can't see it when you compile!
+% If you want to use a "%" symbol, you need to type "\%"
+% Another special character like that is "&". Also "$". And "#"...
+%%%%%%
+
+\begin{example*}[p 314] 
+    This is a mathematical matrix,
+    \[ A = \begin{bmatrix}
+    a_{0,0} & a_{0,1} & a_{0,2} \\
+    a_{1,0} & a_{1,1} & a_{1,2} \\
+    a_{2,0} & a_{2,1} & a_{2,2}
+    \end{bmatrix},
+    \] \& the diagonal entries are those entries $a_{i,j}$ where $i = j$.
+\end{example*}
+
+Notice that I used a comma after the displayed matrix above.  That's because good grammar is still important in mathematical writing.  The text in this paragraph isn't in what we call an ``environment'' (like a ``proof'' or ``prop*'' environment).  Generally, you will use prop*, proof, and example* environments in your writing assignments.
+
+\begin{prop*} 
+    Most good mathematical writing doesn't have \$, \&, or \% in it, anyway.
+\end{prop*}
+
+\begin{proof} 
+    If it did, I would let you use them. But I don't, so it doesn't.  (This is a \textit{\textbf{proof by contrapositive}}, which you'll learn all about in a week or so!) 
+\end{proof}
+
+The next few prop* and proof environments will help you start Writing Assignment \#1.  Copy-paste is one of the most useful aspects of writing math in \LaTeX; you can save a lot of time by recycling code! (Trust me, you will appreciate this during rewrites or after an office hours conversation where you need to rearrange parts of your proof.)
+
+\begin{prop*}[\S1.2, \#17] 
+    For real numbers $c, a_i, r_i$, and $s_i$ where $1 \leq i \leq n$ for some positive integer $n$, summation notation satisfies the following properties:
+    \begin{enumerate}
+        \item $\sum_{i=1}^n (r_i+s_i) a_i = \sum_{i =1}^n r_i a_i + \sum_{i = 1}^n s_i a_i$, and
+        \item \textit{\sum_{i=1}^n (r_i+s_i) a_i = \sum_{i =1}^n r_i a_i + \sum_{i = 1}^n s_i a_i} %%come back to this}.
+    \end{enumerate}
+\end{prop*}
+
+\begin{proof} 
+    Let $c, a_i, r_i$, and $s_i$ be real numbers where $1 \leq i \leq n$ for some positive integer $n$.  
+
+    For part (a), by the properties of sigma notation, the distributive property of multiplication over addition, and the commutative and associative properties of addition, we have that
+    \begin{align*}
+    \sum_{i = 1}^n (r_i + s_i)a_i 
+        &= (r_1 + s_1)a_1 + (r_2 + s_2)a_2 + \cdots + (r_n + s_n) a_n \\
+        &= r_1a_1 + s_1a_1 + r_2a_2 + s_2a_2 + \cdots + r_na_n + s_na_n \\
+        &= (r_1a_1 + r_2a_2 + \cdots + r_na_n) + (s_1a_1 + s_2a_2 + \cdots + s_na_n) \\
+        &= \sum_{i = 1}^n r_ia_i + \sum_{i = 1}^n s_ia_i,
+    \end{align*}
+    as desired.
+    
+    For part (b), (try this one using the previous part as a template).
+\end{proof}
+
+\begin{prop*}[\S1.2, \#18] 
+    \textit{Start this proposition by defining the symbols you're going to use: you should let the reader know that $a_{ij}$ are real numbers for $1 \leq i \leq m$, (a similar statement for $j$), where $m$ and $n$ are (can you guess from the previous proposition?)}, the following equality holds:
+    \[ 
+        \sum_{i = 1}^n \left( \sum_{j = 1}^m a_{ij} \right) 
+        = \sum_{j = 1}^n \left( \text{\textit{fill this part in}} \right).
+    \]
+\end{prop*}
+
+
+\begin{proof} 
+    Assume $a_{ij}$ are real numbers for...
+\end{proof}
+
+\end{document}
+
+Anything you write after the end of the document doesn't matter to the compiler, so you can leave yourself notes and to-do's here with impunity!
